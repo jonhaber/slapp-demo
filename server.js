@@ -12,12 +12,12 @@ var slapp = Slapp({
 
 var app = slapp.attachToExpress(express())
 
-app.message('hi (.*)', ['direct_message'], (msg, text, match) => {
+slapp.message('hi (.*)', ['direct_message'], (msg, text, match) {
   msg.say('How are you?').route('handleHi', { what: match })
 })
 
-app.route('handleHi', (msg, state) => {
-  msg.say(':smile: ' + state.what)
+slapp.router('handleHi', (msg, state) => {
+  msg.say(':smile: ' + state.watch)
 })
 
 app.get('/', function (req, res) {
