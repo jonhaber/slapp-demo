@@ -10,6 +10,10 @@ var slapp = Slapp({
   context: BeepBoopContext()
 })
 
+app.message('(hi|hello)', ['direct_message'], (msg, text) => {
+  msg.say('hello to you!')
+})
+
 var app = slapp.attachToExpress(express())
 
 app.get('/', function (req, res) {
