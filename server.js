@@ -12,12 +12,10 @@ var slapp = Slapp({
 
 var app = slapp.attachToExpress(express())
 
-slapp.message('hi (.*)', ['direct_message'], (msg, text, match1) => {
-  msg.say('How are you?').route('handleHi', { what: match1 })
-})
-
-slapp.route('handleHi', (msg, state) => {
-  msg.say(':smile: ' + state.what)
+slapp.command('/inorout', /^in/, (msg) => {
+  // `respond` is used for actions or commands and uses the `response_url` provided by the
+  // incoming request from Slack
+  msg.respond(`Glad you are in ${match}!`)
 })
 
 app.get('/', function (req, res) {
